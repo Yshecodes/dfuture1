@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <CounterComp />
     <div class="head">
       <h1>DFuture</h1>
       <h3>Projeto Educacional</h3>
@@ -61,5 +62,9 @@
     display: flex;
     align-items: center;
   }
+}
+h1,
+h2 {
+  color: var(--color-heading);
 }
 </style>
