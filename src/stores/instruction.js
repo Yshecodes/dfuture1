@@ -6,5 +6,5 @@ export const instruction = [
   'Use durante seu dia', // noun 3
   'Agora alguns verbos/ações', // verb 1
   'Conseguiu memorizar?', // verb 2
-  'Tenta usar as frases ou palavras', // verb 3
+  'Tente usar as frases ou palavras', // verb 3
 ]
