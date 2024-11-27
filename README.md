@@ -13,4 +13,7 @@ Vue 3
 Vite
 Pinia
 Vue Router
+JavaScript
+CSS
+HTML
 VSCode
