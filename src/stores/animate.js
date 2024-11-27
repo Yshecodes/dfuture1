@@ -5,7 +5,7 @@ export function animateSVG(svgElement) {
   paths.forEach(function (item, index) {
     i++
     let pathLength = item.getTotalLength()
-    let speed = 60
+    let speed = 70
 
     item.setAttribute('stroke-dasharray', pathLength)
     item.setAttribute('stroke-dashoffset', pathLength)
@@ -26,6 +26,8 @@ export function animateSVG(svgElement) {
         fill='freeze' />`
     }
 
+    /*
     console.log(index, pathLength, item.innerHTML)
+    */
   })
 }

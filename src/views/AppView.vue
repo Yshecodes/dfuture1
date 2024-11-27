@@ -1,17 +1,19 @@
 <template>
-  <main>
+  <div class="appView">
     <div class="instruction-text">
       {{ currentText }}
     </div>
     <ImgCtrl v-model:currentWord="wordInfo" v-model:position="currentPosition" />
-    <div v-if="wordInfo" class="word-info">
-      <p>{{ wordInfo.jp }} - {{ wordInfo.pt }} ({{ wordInfo.en }})</p>
-      <p>{{ wordInfo.jpP }}</p>
-      <p>{{ wordInfo.yomi }}</p>
-      <p>{{ wordInfo.ptP }}</p>
-      <p>{{ wordInfo.enP }}</p>
+    <div class="notebook">
+      <div v-if="wordInfo" class="word-info">
+        <p>{{ wordInfo.jp }} - {{ wordInfo.pt }} ({{ wordInfo.en }})</p>
+        <p>{{ wordInfo.jpP }}</p>
+        <p>{{ wordInfo.yomi }}</p>
+        <p>{{ wordInfo.ptP }}</p>
+        <p>{{ wordInfo.enP }}</p>
+      </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script setup>
@@ -28,7 +30,21 @@ watch(currentPosition, (newPosition) => {
 })
 </script>
 
-<style>
+<style scoped>
+.appView {
+  background-color: white;
+  background-image:
+    /* Red margin line
+    linear-gradient(90deg, transparent 40px, #ff000033 40px, #ff000033 42px, transparent 42px),
+    */
+    /* Horizontal lines */ linear-gradient(
+    #00000012 1px,
+    transparent 1px
+  );
+  background-size: 100% 32px;
+  background-position: 0 0;
+}
+
 .instruction-text {
   text-align: center;
   margin: 20px;

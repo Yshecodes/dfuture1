@@ -1,8 +1,12 @@
 <template>
   <div class="img-ctrl">
-    <button @click="widgetUpdateL">L</button>
+    <button class="icon-button" @click="widgetUpdateL">
+      <SvgIcon type="mdi" :path="mdiChevronLeft" size="86" class="svg-icon" />
+    </button>
     <div ref="widgetContainer" id="widget"></div>
-    <button @click="widgetUpdateR">R</button>
+    <button class="icon-button" @click="widgetUpdateR">
+      <SvgIcon type="mdi" :path="mdiChevronRight" size="86" class="svg-icon" />
+    </button>
   </div>
 </template>
 
@@ -10,6 +14,10 @@
 import { ref, onMounted } from 'vue'
 import { animateSVG } from '@/stores/animate.js'
 import { hiragana } from '@/stores/hiragana.js'
+
+import SvgIcon from '@jamescoyle/vue-icon'
+import { mdiChevronLeft } from '@mdi/js'
+import { mdiChevronRight } from '@mdi/js'
 
 const emit = defineEmits(['update:currentWord', 'update:position'])
 const widgetContainer = ref(null)
@@ -97,17 +105,37 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  width: 100%;
+  width: auto;
 }
 
 #widget svg {
-  width: 249px;
-  height: 249px;
-  border: solid yellow 5px;
+  width: 209px;
+  height: 209px;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .img-ctrl {
   position: relative;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  color: #4dadf9;
+}
+
+.icon-button:hover .svg-icon {
+  filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.4));
+}
+
+.svg-icon {
+  transition: filter 0.3s ease;
 }
 </style>
