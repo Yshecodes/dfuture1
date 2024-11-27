@@ -1,16 +1,8 @@
-<script setup>
-
-</script>
-
-<template>
-  <main class="home-container">
-    <h2 class="titulo">Olá! sou o Corajão e vou te ajudar nessa aventura no aprendizado da lingua japonêsa</h2>
-    <button @click="handleClick" class="click-button">Vamos começar a Estudar?</button>
-
-
-    <div class="svg-container">
-      <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="500" height="500" viewBox="0 0 900.000000 900.000000"
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="900.000000pt" height="900.000000pt" viewBox="0 0 900.000000 900.000000"
  preserveAspectRatio="xMidYMid meet">
 
 <g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
@@ -161,57 +153,5 @@ l-15 40 -204 6 c-291 9 -662 8 -814 -3z m724 -25 l271 -6 15 -51 c8 -28 15
 l-486 -5 -15 65 -16 65 256 4 c250 3 257 4 306 28 36 18 55 36 68 63 28 56 46
 178 47 308 l0 115 -177 17 c-98 10 -250 17 -337 17 l-159 0 7 83 c3 45 11 107
 17 139 l11 56 107 7 c58 3 117 7 131 9 51 6 344 6 609 -1z"/>
-  </g>
-  </svg>
-  <h2 class="segundo-titulo">Nome:___________</h2>
-    </div>
-  </main>
-</template>
-
-<style scoped>
-.home-container {
-  display: inside;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  background-color: #2ebe87;
-  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.641);
-}
-
-.svg-container {
-  margin-top: 15px;
-  max-width: 75vh;
-  height:90vh;
-  border-radius: 10%;
-}
-
-.titulo {
-  color: rgb(92, 93, 140);
-  text-shadow: rgb(36, 62, 128);
-  background-color: rgb(255, 255, 255);
-  margin-top: 15px;
-  padding: 20px;
-  transition: all 0.5s ease;
-}
-
-.click-button {
-  padding: 30px 20px;
-  background-color: #393053;
-  box-shadow: 0 7px 20px rgb(248, 246, 246);
-  color: rgb(244, 249, 246);
-  border: none;
-  border-radius: 30px;
-  font-size: 25px;
-  cursor: pointer;
-  margin-top: 15px;
-  margin-left: 15vh;
-}
-
-.segundo-titulo {
-  color: rgb(56, 47, 93);
-  background-color: rgb(255, 255, 255);
-  border-radius: 30px;
-  padding: 10px;
-  margin-left: 10vh;
-}
-</style>
+</g>
+</svg>
