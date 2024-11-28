@@ -3,7 +3,6 @@
     <h2 class="titulo">
       Olá! Sou o Corajão e vou te ajudar nessa aventura de aprendizado da lingua japonesa!
     </h2>
-    <button class="click-button">Vamos começar a Estudar?</button>
 
     <div class="svg-container">
       <object id="corajao" data="/svg/corajao.svg" type="image/svg+xml"></object>
@@ -29,7 +28,7 @@
 .svg-container {
   position: relative;
   margin-top: 15px;
-  width: 400px;
+  width: 390px;
   height: 400px;
 }
 
@@ -40,19 +39,6 @@
   margin-top: 15px;
   padding: 20px;
   transition: all 0.5s ease;
-}
-
-.click-button {
-  padding: 30px 20px;
-  background-color: #393053;
-  box-shadow: 0 7px 20px rgb(248, 246, 246);
-  color: rgb(244, 249, 246);
-  border: none;
-  border-radius: 30px;
-  font-size: 25px;
-  cursor: pointer;
-  margin-top: 15px;
-  margin-left: 15vh;
 }
 
 .nameBox {
