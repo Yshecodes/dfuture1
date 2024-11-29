@@ -23,6 +23,9 @@ const emit = defineEmits(['update:currentWord', 'update:position'])
 const widgetContainer = ref(null)
 const BASE_SVG_PATH = '/svg/'
 const currentPosition = ref(0)
+const currentLetter = ref('a')
+
+const hiraganaOrder = ['a', 'i', 'u', 'e', 'o']
 
 const displayOrder = [
   { type: 'roman' },
@@ -37,7 +40,7 @@ const displayOrder = [
 
 function getCurrentInfo() {
   const current = displayOrder[currentPosition.value]
-  const letter = 'a'
+  const letter = currentLetter.value
 
   if (current.type === 'roman' || current.type === 'japan') {
     return {
@@ -45,14 +48,18 @@ function getCurrentInfo() {
       wordData: null,
     }
   } else {
-    const wordObj = Object.values(hiragana[letter][current.type][current.number])[0]
-    return {
-      svgPath: wordObj.svg,
-      wordData: {
-        ...wordObj,
-        type: current.type,
-      },
+    const letterData = hiragana[letter]
+    if (letterData && letterData[current.type] && letterData[current.type][current.number]) {
+      const wordObj = Object.values(letterData[current.type][current.number])[0]
+      return {
+        svgPath: wordObj.svg,
+        wordData: {
+          ...wordObj,
+          type: current.type,
+        },
+      }
     }
+    return null
   }
 }
 
@@ -72,13 +79,25 @@ async function loadAndCheckSvg(svgPath) {
   }
 }
 
+function moveToNextLetter() {
+  const currentIndex = hiraganaOrder.indexOf(currentLetter.value)
+  if (currentIndex < hiraganaOrder.length - 1) {
+    currentLetter.value = hiraganaOrder[currentIndex + 1]
+    currentPosition.value = 0
+    return true
+  }
+  return false
+}
+
 function widgetUpdateL() {
   if (currentPosition.value > 0) {
     currentPosition.value--
     const info = getCurrentInfo()
-    loadAndCheckSvg(info.svgPath)
-    emit('update:currentWord', info.wordData)
-    emit('update:position', currentPosition.value)
+    if (info) {
+      loadAndCheckSvg(info.svgPath)
+      emit('update:currentWord', info.wordData)
+      emit('update:position', currentPosition.value)
+    }
   }
 }
 
@@ -86,17 +105,39 @@ function widgetUpdateR() {
   if (currentPosition.value < displayOrder.length - 1) {
     currentPosition.value++
     const info = getCurrentInfo()
-    loadAndCheckSvg(info.svgPath)
-    emit('update:currentWord', info.wordData)
-    emit('update:position', currentPosition.value)
+    if (!info) {
+      if (moveToNextLetter()) {
+        const newInfo = getCurrentInfo()
+        if (newInfo) {
+          loadAndCheckSvg(newInfo.svgPath)
+          emit('update:currentWord', newInfo.wordData)
+          emit('update:position', currentPosition.value)
+        }
+      }
+    } else {
+      loadAndCheckSvg(info.svgPath)
+      emit('update:currentWord', info.wordData)
+      emit('update:position', currentPosition.value)
+    }
+  } else {
+    if (moveToNextLetter()) {
+      const newInfo = getCurrentInfo()
+      if (newInfo) {
+        loadAndCheckSvg(newInfo.svgPath)
+        emit('update:currentWord', newInfo.wordData)
+        emit('update:position', currentPosition.value)
+      }
+    }
   }
 }
 
 onMounted(() => {
   const info = getCurrentInfo()
-  loadAndCheckSvg(info.svgPath)
-  emit('update:currentWord', info.wordData)
-  emit('update:position', currentPosition.value)
+  if (info) {
+    loadAndCheckSvg(info.svgPath)
+    emit('update:currentWord', info.wordData)
+    emit('update:position', currentPosition.value)
+  }
 })
 </script>
 
