@@ -68,13 +68,22 @@
 .start {
   margin-top: 20px;
   position: relative;
-  padding: 20px 15px;
-  background-color: #393053;
+  padding: 20px 30px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.4s;
   box-shadow: 0 7px 20px rgb(248, 246, 246);
   color: rgb(244, 249, 246);
   border: none;
   border-radius: 30px;
   font-size: 25px;
+}
+
+.start:hover{
+  background-color: white;
+  box-shadow: 0 7px 50px rgb(255, 255, 255);
+  color: green;
+  font-size: 30px;
 }
 
 #corajao {
