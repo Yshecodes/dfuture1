@@ -89,6 +89,27 @@ function moveToNextLetter() {
   return false
 }
 
+function moveToPreviousLetter() {
+  const currentIndex = hiraganaOrder.indexOf(currentLetter.value)
+  if (currentIndex > 0) {
+    currentLetter.value = hiraganaOrder[currentIndex - 1]
+    currentPosition.value = displayOrder.length - 1
+    return true
+  }
+  return false
+}
+
+function findLastValidPosition(letter) {
+  for (let i = displayOrder.length - 1; i >= 0; i--) {
+    currentPosition.value = i
+    const info = getCurrentInfo()
+    if (info) {
+      return i
+    }
+  }
+  return 0
+}
+
 function widgetUpdateL() {
   if (currentPosition.value > 0) {
     currentPosition.value--
@@ -97,6 +118,17 @@ function widgetUpdateL() {
       loadAndCheckSvg(info.svgPath)
       emit('update:currentWord', info.wordData)
       emit('update:position', currentPosition.value)
+    }
+  } else {
+    if (moveToPreviousLetter()) {
+      const lastPosition = findLastValidPosition(currentLetter.value)
+      currentPosition.value = lastPosition
+      const newInfo = getCurrentInfo()
+      if (newInfo) {
+        loadAndCheckSvg(newInfo.svgPath)
+        emit('update:currentWord', newInfo.wordData)
+        emit('update:position', currentPosition.value)
+      }
     }
   }
 }
