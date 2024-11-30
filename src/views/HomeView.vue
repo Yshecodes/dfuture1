@@ -5,7 +5,7 @@
     </h2>
 
     <div class="svg-container">
-      <object id="corajao" data="/svg/corajao.svg" type="image/svg+xml"></object>
+      <object id="corajao" data="/svg/corajaodog.svg" type="image/svg+xml"></object>
     </div>
     <div class="nameBox">
       <input type="text" name="username" placeholder="Digite seu nome aqui" />
@@ -27,9 +27,9 @@
 
 .svg-container {
   position: relative;
-  margin-top: 15px;
-  width: 390px;
-  height: 400px;
+  margin-top: 30vh;
+  width: 70vh;
+  height: 10vh;
 }
 
 .titulo {
